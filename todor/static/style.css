@@ -1,0 +1,655 @@
+/* Navbar */
+.navbar {
+    background-color: #EAE9EA;
+}
+
+/* Logo */
+.navbar-brand img {
+    height: 80px !important;  /* Tamaño más grande para el logo */
+} 
+
+/* Estilo de los enlaces del navbar */
+.nav-link {
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    margin-right: 15px; /* Agregar espacio entre los botones */
+}
+
+/* Estilo de los botones del navbar */
+.navbar .btn-primary {
+    background-color: #16558C !important; /* Azul siempre */
+    color: white !important; /* Texto blanco */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: none;
+    transition: none;
+}
+
+/* Sin cambios al pasar el mouse */
+.navbar .btn-primary:hover {
+    background-color: #1D4E8F !important;
+    color: white !important;
+}
+
+/* Estilo del botón de hamburguesa */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+    width: 40px !important ;
+    height: 30px !important;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '';
+    width: 24px;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+/* Estilo del offcanvas (Menú desplegable en móvil) */
+.offcanvas {
+    width: 100px !important; /* Tamaño completo */
+    height: 240px; /* Ajuste automático */
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px;
+    border-left: 1px solid #ddd;
+    margin-top: 10px; /* Ajuste para que se vea más abajo */
+}
+
+/* Mejorar el aspecto de los botones dentro del offcanvas */
+.offcanvas .btn-primary {
+    background-color: #16558C !important;
+    color: white !important;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Ajuste en el tamaño y apariencia de los botones en el offcanvas */
+.offcanvas .btn-primary:hover {
+    background-color: #16558C !important;
+    color: white !important;
+}
+
+/* Cambiar color de los iconos en hover */
+.navbar-toggler-icon,
+.nav-link {
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+.nav-link:hover,
+.navbar-toggler-icon:hover {
+    color: #1D4E8F; /* Cambia el color de los iconos */
+    transform: scale(1.1); /* Efecto de escala */
+}
+
+/* Asegurar que el navbar sea pequeño en móvil */
+@media (max-width: 991px) {
+    .navbar .navbar-toggler {
+        padding: 0; /* Reducir padding para el botón de hamburguesa */
+    }
+
+    /* El logo se ajusta automáticamente */
+    .navbar-brand img {
+        height: 30px;
+    }
+
+    .nav-link {
+        margin-right: 10px; /* Ajustar el margen en móvil */
+    }
+}
+
+/* Contenedor principal */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+}
+
+/* Encabezado */
+.custom-heading {
+    font-size: 28px; /* Tamaño adecuado para el encabezado */
+    font-weight: bold;
+    color: #1D4E8F; /* Azul */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Subtítulo */
+.custom-subheading {
+    font-size: 16px; /* Tamaño moderado */
+    color: #666666; /* Gris */
+    margin-bottom: 25px; /* Espaciado inferior */
+}
+
+/* Botón principal (Iniciar sesión) */
+.custom-btn {
+    background-color: #1D4E8F !important; /* Azul */
+    color: white !important; /* Texto blanco */
+    padding: 8px 16px; /* Tamaño adecuado */
+    font-size: 16px; /* Tamaño adecuado */
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px; /* Espaciado inferior */
+    display: inline-block; /* Asegurarse de que se comporta como un botón */
+}
+
+.custom-btn:hover {
+    background-color: #155a8a; /* Azul más oscuro en hover */
+}
+
+/* Botón con borde (Registrarse) */
+.custom-btn-outline {
+    border: 2px solid #1D4E8F;
+    color: #1D4E8F;
+    padding: 8px 16px; /* Tamaño adecuado */
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+.custom-btn-outline:hover {
+    background-color: #1D4E8F;
+    color: white;
+}
+
+/* Ajustes para vista móvil */
+@media (max-width: 767px) {
+    /* Reducir el tamaño de los botones en dispositivos móviles */
+    .custom-btn, .btn {
+        font-size: 14px;
+        color: #ffffff;
+        padding: 8px 6px !important ;
+    }
+
+    /* Ajustar la altura del contenedor principal */
+    .main-content {
+        height: auto;
+        padding: 20px;
+    }
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar {
+    background-color: transparent !important;
+    color: #16558C;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #16558C;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Styles for columns */
+.col-md-4 {
+    padding: 10px;
+}
+/* Card container styles */
+.card {
+    border-radius: 20px !important;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+    border: none;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Card header styles */
+.card-header {
+    background: rgba(242, 242, 242, 1) !important; /* Fondo liso */
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 15px;
+    color: #2c3e50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none !important; /* Elimina líneas o bordes */
+    border-radius: 15px 15px 0 0; /* Bordes redondeados si la tarjeta los tiene */
+    box-shadow: none; /* Asegúrate de que no haya sombras en el header */
+}
+
+
+.card-header span {
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+/* Card body styles */
+.card-body {
+    background-color: rgba(242, 242, 242, 1);
+    padding: 20px;
+    border-radius: 10px !important;
+}
+
+.card-body h6 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #16558C;
+    margin-bottom: 8px;
+}
+
+.card-body p {
+    font-size: 1rem;
+    color: #7a7a7a;
+    margin-bottom: 15px;
+}
+
+/* State badge styles */
+.badge {
+    margin-top: 8px;
+    margin-left: 3px;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-not-started {
+    background-color: #e74c3c;
+}
+
+.badge-in-progress {
+    background-color: #f39c12;
+}
+
+.badge-completed {
+    background-color: #27ae60;
+}
+
+/* Button icons */
+.btn-icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-icon:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+/* Add subtle hover effects for links */
+.btn-link {
+    text-decoration: none;
+    color: #16558C;
+}
+
+.btn-link:hover {
+    color: #3498db;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-header {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .card-body h6 {
+        font-size: 1rem;
+    }
+
+    .card-body p {
+        font-size: 0.9rem;
+    }
+
+    .btn-icon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+/* Modal styles */
+.modal-content {
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.modal-footer .btn {
+    border-radius: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .btn-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+}
+
+  
+/* Estilos específicos para inputs del formulario de crear tarea */
+.form-create-task input[type="text"],
+.form-create-task textarea {
+    background-color: #f2f2f2 !important; /* Gris claro */
+    border: 1px solid #d1d5db; /* Borde gris suave */
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.form-create-task input[type="text"]:focus,
+.form-create-task textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.2); /* Resaltado */
+}
+
+  
+  /* Botones */
+  .btn-primary {
+    background-color: #16558C !important; /* Azul moderno */
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    border-color: none !important;
+  }
+  
+  .btn-primary:hover {
+    background-color: #4e8abf !important; 
+    border-color: none !important
+  }
+  
+  
+  .btn-secondary {
+    background-color: #e5e7eb; /* Gris claro */
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: #1f2937; /* Gris oscuro */
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #d1d5db; /* Gris más oscuro */
+  }
+  
+  /* Ajustes del formulario */
+  form {
+    width: 100%; /* Formulario ocupa todo el ancho de su contenedor */
+  }
+  
+  /* Margen entre campos */
+  .mb-3,
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+  .dropdown-toggle:hover {
+    border: none !important;
+  }
+  
+  .dropdown-toggle {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 15px;
+    font-size: 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: auto !important;
+    white-space: nowrap;
+    margin-right: 10px;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    width: auto;
+    max-width: 150px; /* Ajusta el ancho máximo del menú */
+    margin-bottom: 3px !important;
+    text-align: left; /* Alinea el texto a la izquierda */
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px 0; /* Espaciado dentro del menú */
+  }
+  
+  .dropdown-item {
+    width: 80% !important; /* Ajuste al contenido */
+    padding: 15px 20px; /* Tamaño de los botones */
+    font-size: 12px;
+    text-align: center !important;
+    display: block; /* Alinea los elementos verticalmente */
+    border-radius: 12px !important;
+    margin-bottom: 9px; /* Espaciado entre los botones */
+    margin-left: 15px; /* Espacio en el lado izquierdo */
+    margin-right: 10px; /* Espacio en el lado derecho */
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .dropdown-item.not-started {
+    background-color: rgba(217, 217, 217, 1)  !important;
+    color: #333;
+  }
+  
+  .dropdown-item.in-progress {
+    background-color:  rgba(20, 161, 217, 0.49) !important;
+    color: #004085;
+  }
+  
+  .dropdown-item.completed {
+    background-color: rgba(201, 255, 195, 1) !important;
+    color: #155724;
+  }
+  
+  .dropdown-item + .dropdown-item {
+    margin-top: 5px;
+  }
+  
+  .dropdown-item:hover {
+    opacity: 0.9;
+    cursor: pointer;
+    background-color: #ddd;
+    transform: scale(1.05);
+  }
+  
+
+  @media (max-width: 768px) {
+    .modal.slide-up-modal .modal-dialog {
+      position: fixed;
+      bottom: 0;
+      margin: 0;
+      width: 100%;
+      transition: transform 0.3s ease-in-out;
+      transform: translateY(100%);
+    }
+
+    .modal.slide-up-modal.show .modal-dialog {
+      transform: translateY(0);
+    }
+
+    .modal-content {
+      border-radius: 15px 15px 0 0;
+    }
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 350 !important;
+    border-radius: 0.5rem;
+    color: black !important;
+  }
+  
+  .badge-not-started {
+    background-color: rgba(217, 217, 217, 1);
+  }
+  
+  .badge-in-progress {
+    background-color: rgba(20, 161, 217, 0.49); 
+  }
+  
+  .badge-completed {
+    background-color: rgba(201, 255, 195, 1); 
+  }
+  
+/* Prefijo 'delete-modal' para encapsular los estilos del modal */
+
+/* Modal */
+.delete-modal {
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Inicialmente oculto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1040; /* Asegúrate de que esté encima de otros elementos */
+  }
+  
+  /* Mostrar modal cuando se activa */
+  .delete-modal.show {
+    display: flex; /* Muestra el modal cuando se activa */
+  }
+  
+  /* Centrado del contenido */
+  .delete-modal-content {
+    background: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Se asegura de que se pueda centrar correctamente */
+    margin: auto; /* Centrado horizontal */
+    top: 50%;
+    transform: translateY(-50%); /* Centrado perfecto en el eje vertical */
+  }
+  
+  .delete-modal-content h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .delete-modal-content p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Botones */
+  .delete-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .delete-btn {
+    background: #ffccd5;
+    color: #e74c3c;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .delete-btn:hover {
+    background: #f1948a;
+  }
+  
+  .cancel-btn {
+    background: #ecf0f1;
+    color: #7f8c8d;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .cancel-btn:hover {
+    background: #dcdde1;
+  }
+  
+  /* Para dispositivos móviles */
+  @media (max-width: 767px) {
+    .delete-modal-content {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  

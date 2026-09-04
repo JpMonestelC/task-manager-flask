@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding-top: 5%; padding-bottom: 5%;">
+    <div class="row justify-content-center w-100">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <h2 class="mb-4 text-start" style="color: #16558C; font-weight: bold;">Log In</h2> 
+            <form action="" method="post" class="shadow p-4 bg-white rounded">
+                
+                <!-- Mostrar mensaje de error si existe -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for category, message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                
+                <div class="form-group mb-4">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" required style="border-radius: 8px; padding: 15px; font-size: 1.2rem;">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" class="form-control" required style="border-radius: 8px; padding: 15px; font-size: 1.2rem;">
+                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()" style="border: none; background-color: transparent;">
+                            <img src="{{ url_for('static', filename='eye.png') }}" alt="Toggle Password" id="toggleIcon" style="width: 24px; height: 24px;">
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn custom-btn px-4 py-2 w-100" style="border-radius: 25px; font-size: 1.2rem;">Log In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.src = "{{ url_for('static', filename='eye.png') }}";
+        } else {
+            passwordInput.type = 'password';
+            toggleIcon.src = "{{ url_for('static', filename='eye.png') }}";
+        }
+    }
+</script>
+{% endblock %}

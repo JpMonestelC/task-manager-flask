@@ -1,0 +1,363 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container mt-4">
+  <nav class="navbar bg-light mb-4 p-3 rounded" style="background-color: transparent !important; color: #16558C; font-weight: 600 !important;">
+    <h1 class="mb-0">{% block title %}Tasks{% endblock %}</h1>
+  </nav>
+
+  <div class="row">
+    <!-- To Do Column -->
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header text-center  fw-bold d-flex justify-content-between align-items-center">
+          <span>To Do</span>
+          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="Nueva tarea">
+            <img src="{{ url_for('static', filename='add.png') }}" alt="Nuevo" class="btn-icon">
+          </a>
+        </div>
+        <div class="card-body" id="todo-column">
+          {% for todo in todos | reverse %}
+          {% if todo.state is none %}
+          <div class="card mb-2 p-2 shadow-sm">
+            <!-- Etiqueta de estado -->
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge badge-not-started">Not started</span>
+            </div>
+            <h6>{{ todo.title }}</h6>
+            <p>{{ todo.desc }}</p>
+            <div class="d-flex justify-content-end">
+              <a href="#" 
+                 class="me-2 edit-task" 
+                 data-bs-toggle="modal" 
+                 data-bs-target="#updateModal" 
+                 data-id="{{ todo.id }}" 
+                 data-title="{{ todo.title }}" 
+                 data-desc="{{ todo.desc }}" 
+                 data-state="none">
+                <img src="{{ url_for('static', filename='edit.png') }}" alt="Editar" class="btn-icon">
+              </a>
+              <form action="{{ url_for('todo.delete', id=todo.id) }}" method="post" style="display:inline;" id="deleteForm-{{ todo.id }}">
+                <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Eliminar" class="btn-icon">
+                </button>
+              </form>
+              
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- In Progress Column -->
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header text-center  fw-bold d-flex justify-content-between align-items-center">
+          <span>In Progress</span>
+          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="Nueva tarea">
+            <img src="{{ url_for('static', filename='add.png') }}" alt="Nuevo" class="btn-icon">
+          </a>
+        </div>
+        <div class="card-body" id="inprogress-column">
+          {% for todo in todos | reverse %}
+          {% if todo.state == false %}
+          <div class="card mb-2 p-2 shadow-sm">
+            <!-- Etiqueta de estado -->
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge badge-in-progress">In progress</span>
+            </div>
+            <h6>{{ todo.title }}</h6>
+            <p>{{ todo.desc }}</p>
+            <div class="d-flex justify-content-end">
+              <a href="#" 
+                 class="me-2 edit-task" 
+                 data-bs-toggle="modal" 
+                 data-bs-target="#updateModal" 
+                 data-id="{{ todo.id }}" 
+                 data-title="{{ todo.title }}" 
+                 data-desc="{{ todo.desc }}" 
+                 data-state="false">
+                <img src="{{ url_for('static', filename='edit.png') }}" alt="Editar" class="btn-icon">
+              </a>
+              <form action="{{ url_for('todo.delete', id=todo.id) }}" method="post" style="display:inline;" id="deleteForm-{{ todo.id }}">
+                <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Eliminar" class="btn-icon">
+                </button>
+              </form>
+              
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Completed Column -->
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header text-center fw-bold d-flex justify-content-between align-items-center">
+          <span>Completed</span>
+          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="Nueva tarea">
+            <img src="{{ url_for('static', filename='add.png') }}" alt="Nuevo" class="btn-icon">
+          </a>
+        </div>
+        <div class="card-body" id="done-column">
+          {% for todo in todos | reverse %}
+          {% if todo.state == true %}
+          <div class="card mb-2 p-2 shadow-sm">
+            <!-- Etiqueta de estado -->
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge badge-completed">Completed</span>
+            </div>
+            <h6>{{ todo.title }}</h6>
+            <p>{{ todo.desc }}</p>
+            <div class="d-flex justify-content-end">
+              <a href="#" 
+                 class="me-2 edit-task" 
+                 data-bs-toggle="modal" 
+                 data-bs-target="#updateModal" 
+                 data-id="{{ todo.id }}" 
+                 data-title="{{ todo.title }}" 
+                 data-desc="{{ todo.desc }}" 
+                 data-state="true">
+                <img src="{{ url_for('static', filename='edit.png') }}" alt="Editar" class="btn-icon">
+              </a>
+              <form action="{{ url_for('todo.delete', id=todo.id) }}" method="post" style="display:inline;" id="deleteForm-{{ todo.id }}">
+                <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Eliminar" class="btn-icon">
+                </button>
+              </form>
+              
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Create Modal -->
+ <div class="modal fade slide-up-modal" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalLabel">Create Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{ url_for('todo.create') }}" method="post">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="createTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="createTitle" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="createDesc" class="form-label">Description</label>
+            <textarea class="form-control" id="createDesc" name="desc" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Update Modal -->
+<div class="modal fade slide-up-modal" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">Edit Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="updateForm" method="post">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="updateTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="updateTitle" name="title" required>
+          </div>
+          <div class="mb-3">
+            <label for="updateDesc" class="form-label">Description</label>
+            <textarea class="form-control" id="updateDesc" name="desc" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="updateState" class="form-label">Status</label>
+            <div class="dropdown">
+              <button 
+                class="btn dropdown-toggle" 
+                type="button" 
+                id="dropdownStateButton" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false" 
+                style="background-color: lightgray; color: black;"
+              >
+                Not Started
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownStateButton">
+                <li>
+                  <a 
+                    class="dropdown-item text-dark" 
+                    href="#" 
+                    style="background-color: lightgray;" 
+                    data-value="none"
+                  >
+                    Not Started
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    class="dropdown-item text-dark" 
+                    href="#" 
+                    style="background-color: lightblue;" 
+                    data-value="false"
+                  >
+                    In Progress
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    class="dropdown-item text-dark" 
+                    href="#" 
+                    style="background-color: lightgreen;" 
+                    data-value="true"
+                  >
+                    Completed
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- Campo oculto para enviar el estado al backend -->
+            <input type="hidden" name="state" id="updateStateInput" value="none">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content delete-modal-content">
+      <h2 id="deleteModalLabel">Do you want to delete this task? </h2>
+      <p>This action cannot be undone.</p>
+      <div class="delete-modal-buttons">
+        <button id="confirmDeleteBtn" class="delete-btn">Delete</button>
+        <button type="button" class="cancel-btn" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const editButtons = document.querySelectorAll('.edit-task');
+  const updateForm = document.getElementById('updateForm');
+  const updateTitle = document.getElementById('updateTitle');
+  const updateDesc = document.getElementById('updateDesc');
+  const dropdownButton = document.getElementById('dropdownStateButton');
+  const dropdownItems = document.querySelectorAll('.dropdown-menu .dropdown-item');
+  const stateInput = document.getElementById('updateStateInput');
+
+  // Cambiar el texto y color del botón cuando se seleccione un estado
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      const selectedState = item.getAttribute('data-value');
+      const selectedColor = item.style.backgroundColor;
+
+      // Actualizar el botón
+      dropdownButton.textContent = item.textContent;
+      dropdownButton.style.backgroundColor = selectedColor;
+
+      // Actualizar el campo oculto
+      stateInput.value = selectedState;
+    });
+  });
+
+  // Configurar el formulario de edición
+  editButtons.forEach(function (button) {
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const taskId = button.getAttribute('data-id');
+      const taskTitle = button.getAttribute('data-title');
+      const taskDesc = button.getAttribute('data-desc');
+      const taskState = button.getAttribute('data-state');
+
+      updateTitle.value = taskTitle;
+      updateDesc.value = taskDesc;
+
+      // Seleccionar automáticamente el estado actual en el dropdown
+      const activeItem = [...dropdownItems].find(item => item.getAttribute('data-value') === taskState);
+      if (activeItem) {
+        dropdownButton.textContent = activeItem.textContent;
+        dropdownButton.style.backgroundColor = activeItem.style.backgroundColor;
+        stateInput.value = taskState;
+      }
+
+      updateForm.action = `/todo/update/${taskId}`;
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const modals = document.querySelectorAll('.modal');
+
+  modals.forEach(modal => {
+    modal.addEventListener('shown.bs.modal', function () {
+      if (window.innerWidth <= 768) {
+        modal.style.transform = 'translateY(0)';
+      }
+    });
+
+    modal.addEventListener('hidden.bs.modal', function () {
+      if (window.innerWidth <= 768) {
+        modal.style.transform = 'translateY(100%)';
+      }
+    });
+  });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+  let taskToDelete = null;
+
+  // Obtener tarea a eliminar al abrir el modal
+  document.querySelectorAll('.btn[data-bs-target="#deleteModal"]').forEach(button => {
+    button.addEventListener('click', function () {
+      taskToDelete = this.closest('form').action; // Ruta de la tarea
+    });
+  });
+
+  // Confirmar eliminación
+  confirmDeleteBtn.addEventListener('click', function () {
+    if (taskToDelete) {
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = taskToDelete;
+      document.body.appendChild(form);
+      form.submit(); // Enviar solicitud de eliminación
+    }
+  });
+});
+
+
+
+
+</script>
+{% endblock %}

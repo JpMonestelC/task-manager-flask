@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <!-- Main content -->
+    <div class="main-content d-flex justify-content-center align-items-center" style="height: 80vh;">
+        <div class="text-center">
+            <h2 class="custom-heading">Optimize task management in your company.</h2>
+            <p class="custom-subheading">Plan, prioritize, and achieve your goals, all in one place.</p>
+            <a href="{{ url_for('auth.login') }}" class="btn custom-btn mb-3 d-block">Log In</a>
+            <!-- Agregamos la clase custom-btn-outline para aplicar los estilos -->
+            <a href="{{ url_for('auth.register') }}" class="btn custom-btn d-block">Sign In</a>
+        </div>
+    </div>
+{% endblock %}

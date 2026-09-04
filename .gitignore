@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+.venv/
+env-todo/
+venv/
+env/
+
+# Flask instance folder - holds the local SQLite database, never commit real
+# (even test) user data or password hashes.
+instance/
+
+# Local secrets
+.env
+*.local
+
+# OS files
+.DS_Store
+Thumbs.db
