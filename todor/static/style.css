@@ -5,21 +5,21 @@
 
 /* Logo */
 .navbar-brand img {
-    height: 80px !important;  /* Tamaño más grande para el logo */
+    height: 80px !important;  /* Bigger size for the logo */
 } 
 
-/* Estilo de los enlaces del navbar */
+/* Navbar link style */
 .nav-link {
     font-weight: bold;
     font-size: 14px;
     text-align: center;
-    margin-right: 15px; /* Agregar espacio entre los botones */
+    margin-right: 15px; /* Add spacing between buttons */
 }
 
-/* Estilo de los botones del navbar */
+/* Navbar button style */
 .navbar .btn-primary {
-    background-color: #16558C !important; /* Azul siempre */
-    color: white !important; /* Texto blanco */
+    background-color: #16558C !important; /* Always blue */
+    color: white !important; /* White text */
     border: none;
     padding: 8px 16px;
     border-radius: 8px;
@@ -30,13 +30,13 @@
     transition: none;
 }
 
-/* Sin cambios al pasar el mouse */
+/* No change on hover */
 .navbar .btn-primary:hover {
     background-color: #1D4E8F !important;
     color: white !important;
 }
 
-/* Estilo del botón de hamburguesa */
+/* Hamburger button style */
 .navbar-toggler {
     border: none;
     background: transparent;
@@ -68,17 +68,17 @@
     top: 8px;
 }
 
-/* Estilo del offcanvas (Menú desplegable en móvil) */
+/* Offcanvas style (mobile dropdown menu) */
 .offcanvas {
-    width: 100px !important; /* Tamaño completo */
-    height: 240px; /* Ajuste automático */
-    background-color: #ffffff; /* Fondo blanco */
+    width: 100px !important; /* Full size */
+    height: 240px; /* Auto-adjusted */
+    background-color: #ffffff; /* White background */
     border-radius: 8px;
     border-left: 1px solid #ddd;
-    margin-top: 10px; /* Ajuste para que se vea más abajo */
+    margin-top: 10px; /* Sit a bit lower */
 }
 
-/* Mejorar el aspecto de los botones dentro del offcanvas */
+/* Improve the look of the buttons inside the offcanvas */
 .offcanvas .btn-primary {
     background-color: #16558C !important;
     color: white !important;
@@ -90,13 +90,13 @@
     text-align: center;
 }
 
-/* Ajuste en el tamaño y apariencia de los botones en el offcanvas */
+/* Adjust size/appearance of the buttons in the offcanvas */
 .offcanvas .btn-primary:hover {
     background-color: #16558C !important;
     color: white !important;
 }
 
-/* Cambiar color de los iconos en hover */
+/* Change icon color on hover */
 .navbar-toggler-icon,
 .nav-link {
     transition: color 0.3s ease, transform 0.2s;
@@ -104,27 +104,27 @@
 
 .nav-link:hover,
 .navbar-toggler-icon:hover {
-    color: #1D4E8F; /* Cambia el color de los iconos */
-    transform: scale(1.1); /* Efecto de escala */
+    color: #1D4E8F; /* Change the icon color */
+    transform: scale(1.1); /* Scale effect */
 }
 
-/* Asegurar que el navbar sea pequeño en móvil */
+/* Keep the navbar compact on mobile */
 @media (max-width: 991px) {
     .navbar .navbar-toggler {
-        padding: 0; /* Reducir padding para el botón de hamburguesa */
+        padding: 0; /* Reduce padding on the hamburger button */
     }
 
-    /* El logo se ajusta automáticamente */
+    /* The logo resizes automatically */
     .navbar-brand img {
         height: 30px;
     }
 
     .nav-link {
-        margin-right: 10px; /* Ajustar el margen en móvil */
+        margin-right: 10px; /* Adjust the margin on mobile */
     }
 }
 
-/* Contenedor principal */
+/* Main container */
 .main-content {
     display: flex;
     justify-content: center;
@@ -133,44 +133,44 @@
     text-align: center;
 }
 
-/* Encabezado */
+/* Heading */
 .custom-heading {
-    font-size: 28px; /* Tamaño adecuado para el encabezado */
+    font-size: 28px; /* Appropriate heading size */
     font-weight: bold;
-    color: #1D4E8F; /* Azul */
-    margin-bottom: 20px; /* Espaciado inferior */
+    color: #1D4E8F; /* Blue */
+    margin-bottom: 20px; /* Bottom spacing */
 }
 
-/* Subtítulo */
+/* Subheading */
 .custom-subheading {
-    font-size: 16px; /* Tamaño moderado */
-    color: #666666; /* Gris */
-    margin-bottom: 25px; /* Espaciado inferior */
+    font-size: 16px; /* Moderate size */
+    color: #666666; /* Gray */
+    margin-bottom: 25px; /* Bottom spacing */
 }
 
-/* Botón principal (Iniciar sesión) */
+/* Primary button (Log In) */
 .custom-btn {
-    background-color: #1D4E8F !important; /* Azul */
-    color: white !important; /* Texto blanco */
-    padding: 8px 16px; /* Tamaño adecuado */
-    font-size: 16px; /* Tamaño adecuado */
+    background-color: #1D4E8F !important; /* Blue */
+    color: white !important; /* White text */
+    padding: 8px 16px; /* Appropriate size */
+    font-size: 16px; /* Appropriate size */
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    margin-bottom: 10px; /* Espaciado inferior */
-    display: inline-block; /* Asegurarse de que se comporta como un botón */
+    margin-bottom: 10px; /* Bottom spacing */
+    display: inline-block; /* Make sure it behaves like a button */
 }
 
 .custom-btn:hover {
-    background-color: #155a8a; /* Azul más oscuro en hover */
+    background-color: #155a8a; /* Darker blue on hover */
 }
 
-/* Botón con borde (Registrarse) */
+/* Outlined button (Sign up) */
 .custom-btn-outline {
     border: 2px solid #1D4E8F;
     color: #1D4E8F;
-    padding: 8px 16px; /* Tamaño adecuado */
+    padding: 8px 16px; /* Appropriate size */
     font-size: 16px;
     font-weight: bold;
     border-radius: 8px;
@@ -184,16 +184,16 @@
     color: white;
 }
 
-/* Ajustes para vista móvil */
+/* Mobile view adjustments */
 @media (max-width: 767px) {
-    /* Reducir el tamaño de los botones en dispositivos móviles */
+    /* Reduce button size on mobile devices */
     .custom-btn, .btn {
         font-size: 14px;
         color: #ffffff;
         padding: 8px 6px !important ;
     }
 
-    /* Ajustar la altura del contenedor principal */
+    /* Adjust the main container height */
     .main-content {
         height: auto;
         padding: 20px;
@@ -241,7 +241,7 @@ h1 {
 
 /* Card header styles */
 .card-header {
-    background: rgba(242, 242, 242, 1) !important; /* Fondo liso */
+    background: rgba(242, 242, 242, 1) !important; /* Flat background */
     font-size: 1.3rem;
     font-weight: bold;
     padding: 15px;
@@ -249,9 +249,9 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: none !important; /* Elimina líneas o bordes */
-    border-radius: 15px 15px 0 0; /* Bordes redondeados si la tarjeta los tiene */
-    box-shadow: none; /* Asegúrate de que no haya sombras en el header */
+    border: none !important; /* Remove lines/borders */
+    border-radius: 15px 15px 0 0; /* Rounded corners to match the card */
+    box-shadow: none; /* Make sure there's no shadow on the header */
 }
 
 
@@ -278,30 +278,6 @@ h1 {
     font-size: 1rem;
     color: #7a7a7a;
     margin-bottom: 15px;
-}
-
-/* State badge styles */
-.badge {
-    margin-top: 8px;
-    margin-left: 3px;
-    font-size: 0.9rem;
-    padding: 5px 10px;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.badge-not-started {
-    background-color: #e74c3c;
-}
-
-.badge-in-progress {
-    background-color: #f39c12;
-}
-
-.badge-completed {
-    background-color: #27ae60;
 }
 
 /* Button icons */
@@ -382,11 +358,11 @@ h1 {
 }
 
   
-/* Estilos específicos para inputs del formulario de crear tarea */
+/* Specific styles for the create-task form inputs */
 .form-create-task input[type="text"],
 .form-create-task textarea {
-    background-color: #f2f2f2 !important; /* Gris claro */
-    border: 1px solid #d1d5db; /* Borde gris suave */
+    background-color: #f2f2f2 !important; /* Light gray */
+    border: 1px solid #d1d5db; /* Soft gray border */
     border-radius: 5px;
     padding: 12px;
     font-size: 1rem;
@@ -395,46 +371,55 @@ h1 {
 .form-create-task input[type="text"]:focus,
 .form-create-task textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.2); /* Resaltado */
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.2); /* Highlight */
 }
 
-  
-  /* Botones */
+/* Shared input style for the login/register forms - keeps the
+   border-radius/padding/font-size in one place instead of repeating them
+   as inline styles on every <input> (see login.html and register.html). */
+.auth-input {
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+
+  /* Buttons */
   .btn-primary {
-    background-color: #16558C !important; /* Azul moderno */
+    background-color: #16558C !important; /* Modern blue */
     border-radius: 5px;
     font-size: 1rem;
     padding: 10px 20px;
     transition: background-color 0.3s ease;
     border-color: none !important;
   }
-  
+
   .btn-primary:hover {
-    background-color: #4e8abf !important; 
+    background-color: #4e8abf !important;
     border-color: none !important
   }
-  
-  
+
+
   .btn-secondary {
-    background-color: #e5e7eb; /* Gris claro */
+    background-color: #e5e7eb; /* Light gray */
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     padding: 10px 20px;
-    color: #1f2937; /* Gris oscuro */
+    color: #1f2937; /* Dark gray */
     transition: background-color 0.3s ease;
   }
-  
+
   .btn-secondary:hover {
-    background-color: #d1d5db; /* Gris más oscuro */
+    background-color: #d1d5db; /* Darker gray */
   }
-  
-  /* Ajustes del formulario */
+
+  /* Form adjustments */
   form {
-    width: 100%; /* Formulario ocupa todo el ancho de su contenedor */
+    width: 100%; /* Form takes the full width of its container */
   }
-  
-  /* Margen entre campos */
+
+  /* Spacing between fields */
   .mb-3,
   .mb-4 {
     margin-bottom: 1.5rem;
@@ -459,13 +444,13 @@ h1 {
     margin-left: 0 !important;
     max-width: 100% !important;
   }
-  
+
   .dropdown-menu {
     display: none;
     width: auto;
-    max-width: 150px; /* Ajusta el ancho máximo del menú */
+    max-width: 150px; /* Cap the menu's width */
     margin-bottom: 3px !important;
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: left; /* Left-align text */
     border: 1px solid #ccc;
     border-radius: 12px;
     background-color: #fff;
@@ -474,37 +459,22 @@ h1 {
     left: 0;
     z-index: 100;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 5px 0; /* Espaciado dentro del menú */
+    padding: 5px 0; /* Padding inside the menu */
   }
-  
+
   .dropdown-item {
-    width: 80% !important; /* Ajuste al contenido */
-    padding: 15px 20px; /* Tamaño de los botones */
+    width: 80% !important; /* Fit to content */
+    padding: 15px 20px; /* Button sizing */
     font-size: 12px;
     text-align: center !important;
-    display: block; /* Alinea los elementos verticalmente */
+    display: block; /* Stack items vertically */
     border-radius: 12px !important;
-    margin-bottom: 9px; /* Espaciado entre los botones */
-    margin-left: 15px; /* Espacio en el lado izquierdo */
-    margin-right: 10px; /* Espacio en el lado derecho */
+    margin-bottom: 9px; /* Spacing between buttons */
+    margin-left: 15px; /* Left-side spacing */
+    margin-right: 10px; /* Right-side spacing */
     transition: background-color 0.3s, transform 0.3s;
   }
-  
-  .dropdown-item.not-started {
-    background-color: rgba(217, 217, 217, 1)  !important;
-    color: #333;
-  }
-  
-  .dropdown-item.in-progress {
-    background-color:  rgba(20, 161, 217, 0.49) !important;
-    color: #004085;
-  }
-  
-  .dropdown-item.completed {
-    background-color: rgba(201, 255, 195, 1) !important;
-    color: #155724;
-  }
-  
+
   .dropdown-item + .dropdown-item {
     margin-top: 5px;
   }
@@ -536,6 +506,7 @@ h1 {
     }
   }
 
+  /* State badge styles */
   .badge {
     display: inline-block;
     padding: 0.25rem 0.5rem;
@@ -557,28 +528,28 @@ h1 {
     background-color: rgba(201, 255, 195, 1); 
   }
   
-/* Prefijo 'delete-modal' para encapsular los estilos del modal */
+/* 'delete-modal' prefix scopes these modal styles */
 
 /* Modal */
 .delete-modal {
-    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: none; /* Inicialmente oculto */
+    display: none; /* Hidden by default */
     justify-content: center;
     align-items: center;
-    z-index: 1040; /* Asegúrate de que esté encima de otros elementos */
+    z-index: 1040; /* Make sure it stays above other elements */
   }
-  
-  /* Mostrar modal cuando se activa */
+
+  /* Show the modal when active */
   .delete-modal.show {
-    display: flex; /* Muestra el modal cuando se activa */
+    display: flex; /* Shows the modal when active */
   }
-  
-  /* Centrado del contenido */
+
+  /* Center the content */
   .delete-modal-content {
     background: #f5f5f5;
     border-radius: 10px;
@@ -587,10 +558,10 @@ h1 {
     width: 90%;
     max-width: 400px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative; /* Se asegura de que se pueda centrar correctamente */
-    margin: auto; /* Centrado horizontal */
+    position: relative; /* Ensures proper centering */
+    margin: auto; /* Horizontal centering */
     top: 50%;
-    transform: translateY(-50%); /* Centrado perfecto en el eje vertical */
+    transform: translateY(-50%); /* Perfect vertical centering */
   }
   
   .delete-modal-content h2 {
@@ -645,7 +616,7 @@ h1 {
     background: #dcdde1;
   }
   
-  /* Para dispositivos móviles */
+  /* For mobile devices */
   @media (max-width: 767px) {
     .delete-modal-content {
       top: 50%;

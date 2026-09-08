@@ -3,7 +3,7 @@
 {% block content %}
 <section class="container mt-4">
   <nav class="navbar bg-light mb-4 p-3 rounded" style="background-color: transparent !important; color: #16558C; font-weight: 600 !important;">
-    <h1 class="mb-0">{% block title %}Tasks{% endblock %}</h1>
+    <h1 class="mb-0">{% block page_heading %}Tasks{% endblock %}</h1>
   </nav>
 
   <div class="row">
@@ -12,37 +12,37 @@
       <div class="card shadow-sm mb-4">
         <div class="card-header text-center  fw-bold d-flex justify-content-between align-items-center">
           <span>To Do</span>
-          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="Nueva tarea">
-            <img src="{{ url_for('static', filename='add.png') }}" alt="Nuevo" class="btn-icon">
+          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="New task">
+            <img src="{{ url_for('static', filename='add.png') }}" alt="New" class="btn-icon">
           </a>
         </div>
         <div class="card-body" id="todo-column">
           {% for todo in todos | reverse %}
-          {% if todo.state is none %}
+          {% if todo.state == 'not_started' %}
           <div class="card mb-2 p-2 shadow-sm">
-            <!-- Etiqueta de estado -->
+            <!-- Status label -->
             <div class="d-flex align-items-center mb-2">
               <span class="badge badge-not-started">Not started</span>
             </div>
             <h6>{{ todo.title }}</h6>
             <p>{{ todo.desc }}</p>
             <div class="d-flex justify-content-end">
-              <a href="#" 
-                 class="me-2 edit-task" 
-                 data-bs-toggle="modal" 
-                 data-bs-target="#updateModal" 
-                 data-id="{{ todo.id }}" 
-                 data-title="{{ todo.title }}" 
-                 data-desc="{{ todo.desc }}" 
-                 data-state="none">
-                <img src="{{ url_for('static', filename='edit.png') }}" alt="Editar" class="btn-icon">
+              <a href="#"
+                 class="me-2 edit-task"
+                 data-bs-toggle="modal"
+                 data-bs-target="#updateModal"
+                 data-id="{{ todo.id }}"
+                 data-title="{{ todo.title }}"
+                 data-desc="{{ todo.desc }}"
+                 data-state="not_started">
+                <img src="{{ url_for('static', filename='edit.png') }}" alt="Edit" class="btn-icon">
               </a>
               <form action="{{ url_for('todo.delete', id=todo.id) }}" method="post" style="display:inline;" id="deleteForm-{{ todo.id }}">
                 <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Eliminar" class="btn-icon">
+                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Delete" class="btn-icon">
                 </button>
               </form>
-              
+
             </div>
           </div>
           {% endif %}
@@ -56,37 +56,37 @@
       <div class="card shadow-sm mb-4">
         <div class="card-header text-center  fw-bold d-flex justify-content-between align-items-center">
           <span>In Progress</span>
-          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="Nueva tarea">
-            <img src="{{ url_for('static', filename='add.png') }}" alt="Nuevo" class="btn-icon">
+          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="New task">
+            <img src="{{ url_for('static', filename='add.png') }}" alt="New" class="btn-icon">
           </a>
         </div>
         <div class="card-body" id="inprogress-column">
           {% for todo in todos | reverse %}
-          {% if todo.state == false %}
+          {% if todo.state == 'in_progress' %}
           <div class="card mb-2 p-2 shadow-sm">
-            <!-- Etiqueta de estado -->
+            <!-- Status label -->
             <div class="d-flex align-items-center mb-2">
               <span class="badge badge-in-progress">In progress</span>
             </div>
             <h6>{{ todo.title }}</h6>
             <p>{{ todo.desc }}</p>
             <div class="d-flex justify-content-end">
-              <a href="#" 
-                 class="me-2 edit-task" 
-                 data-bs-toggle="modal" 
-                 data-bs-target="#updateModal" 
-                 data-id="{{ todo.id }}" 
-                 data-title="{{ todo.title }}" 
-                 data-desc="{{ todo.desc }}" 
-                 data-state="false">
-                <img src="{{ url_for('static', filename='edit.png') }}" alt="Editar" class="btn-icon">
+              <a href="#"
+                 class="me-2 edit-task"
+                 data-bs-toggle="modal"
+                 data-bs-target="#updateModal"
+                 data-id="{{ todo.id }}"
+                 data-title="{{ todo.title }}"
+                 data-desc="{{ todo.desc }}"
+                 data-state="in_progress">
+                <img src="{{ url_for('static', filename='edit.png') }}" alt="Edit" class="btn-icon">
               </a>
               <form action="{{ url_for('todo.delete', id=todo.id) }}" method="post" style="display:inline;" id="deleteForm-{{ todo.id }}">
                 <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Eliminar" class="btn-icon">
+                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Delete" class="btn-icon">
                 </button>
               </form>
-              
+
             </div>
           </div>
           {% endif %}
@@ -100,37 +100,37 @@
       <div class="card shadow-sm mb-4">
         <div class="card-header text-center fw-bold d-flex justify-content-between align-items-center">
           <span>Completed</span>
-          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="Nueva tarea">
-            <img src="{{ url_for('static', filename='add.png') }}" alt="Nuevo" class="btn-icon">
+          <a href="#" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#createModal" title="New task">
+            <img src="{{ url_for('static', filename='add.png') }}" alt="New" class="btn-icon">
           </a>
         </div>
         <div class="card-body" id="done-column">
           {% for todo in todos | reverse %}
-          {% if todo.state == true %}
+          {% if todo.state == 'completed' %}
           <div class="card mb-2 p-2 shadow-sm">
-            <!-- Etiqueta de estado -->
+            <!-- Status label -->
             <div class="d-flex align-items-center mb-2">
               <span class="badge badge-completed">Completed</span>
             </div>
             <h6>{{ todo.title }}</h6>
             <p>{{ todo.desc }}</p>
             <div class="d-flex justify-content-end">
-              <a href="#" 
-                 class="me-2 edit-task" 
-                 data-bs-toggle="modal" 
-                 data-bs-target="#updateModal" 
-                 data-id="{{ todo.id }}" 
-                 data-title="{{ todo.title }}" 
-                 data-desc="{{ todo.desc }}" 
-                 data-state="true">
-                <img src="{{ url_for('static', filename='edit.png') }}" alt="Editar" class="btn-icon">
+              <a href="#"
+                 class="me-2 edit-task"
+                 data-bs-toggle="modal"
+                 data-bs-target="#updateModal"
+                 data-id="{{ todo.id }}"
+                 data-title="{{ todo.title }}"
+                 data-desc="{{ todo.desc }}"
+                 data-state="completed">
+                <img src="{{ url_for('static', filename='edit.png') }}" alt="Edit" class="btn-icon">
               </a>
               <form action="{{ url_for('todo.delete', id=todo.id) }}" method="post" style="display:inline;" id="deleteForm-{{ todo.id }}">
                 <button type="button" class="btn btn-link p-0" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Eliminar" class="btn-icon">
+                  <img src="{{ url_for('static', filename='delete.png') }}" alt="Delete" class="btn-icon">
                 </button>
               </form>
-              
+
             </div>
           </div>
           {% endif %}
@@ -191,51 +191,51 @@
           <div class="mb-3">
             <label for="updateState" class="form-label">Status</label>
             <div class="dropdown">
-              <button 
-                class="btn dropdown-toggle" 
-                type="button" 
-                id="dropdownStateButton" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false" 
+              <button
+                class="btn dropdown-toggle"
+                type="button"
+                id="dropdownStateButton"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
                 style="background-color: lightgray; color: black;"
               >
                 Not Started
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownStateButton">
                 <li>
-                  <a 
-                    class="dropdown-item text-dark" 
-                    href="#" 
-                    style="background-color: lightgray;" 
-                    data-value="none"
+                  <a
+                    class="dropdown-item text-dark"
+                    href="#"
+                    style="background-color: lightgray;"
+                    data-value="not_started"
                   >
                     Not Started
                   </a>
                 </li>
                 <li>
-                  <a 
-                    class="dropdown-item text-dark" 
-                    href="#" 
-                    style="background-color: lightblue;" 
-                    data-value="false"
+                  <a
+                    class="dropdown-item text-dark"
+                    href="#"
+                    style="background-color: lightblue;"
+                    data-value="in_progress"
                   >
                     In Progress
                   </a>
                 </li>
                 <li>
-                  <a 
-                    class="dropdown-item text-dark" 
-                    href="#" 
-                    style="background-color: lightgreen;" 
-                    data-value="true"
+                  <a
+                    class="dropdown-item text-dark"
+                    href="#"
+                    style="background-color: lightgreen;"
+                    data-value="completed"
                   >
                     Completed
                   </a>
                 </li>
               </ul>
             </div>
-            <!-- Campo oculto para enviar el estado al backend -->
-            <input type="hidden" name="state" id="updateStateInput" value="none">
+            <!-- Hidden field used to send the state to the backend -->
+            <input type="hidden" name="state" id="updateStateInput" value="not_started">
           </div>
         </div>
         <div class="modal-footer">
@@ -274,23 +274,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const dropdownItems = document.querySelectorAll('.dropdown-menu .dropdown-item');
   const stateInput = document.getElementById('updateStateInput');
 
-  // Cambiar el texto y color del botón cuando se seleccione un estado
+  // Update the button text/color when a state is selected
   dropdownItems.forEach(item => {
     item.addEventListener('click', function (e) {
       e.preventDefault();
       const selectedState = item.getAttribute('data-value');
       const selectedColor = item.style.backgroundColor;
 
-      // Actualizar el botón
+      // Update the button
       dropdownButton.textContent = item.textContent;
       dropdownButton.style.backgroundColor = selectedColor;
 
-      // Actualizar el campo oculto
+      // Update the hidden field
       stateInput.value = selectedState;
     });
   });
 
-  // Configurar el formulario de edición
+  // Wire up the edit form
   editButtons.forEach(function (button) {
     button.addEventListener('click', function (e) {
       e.preventDefault();
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateTitle.value = taskTitle;
       updateDesc.value = taskDesc;
 
-      // Seleccionar automáticamente el estado actual en el dropdown
+      // Auto-select the task's current state in the dropdown
       const activeItem = [...dropdownItems].find(item => item.getAttribute('data-value') === taskState);
       if (activeItem) {
         dropdownButton.textContent = activeItem.textContent;
@@ -337,21 +337,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
   let taskToDelete = null;
 
-  // Obtener tarea a eliminar al abrir el modal
+  // Capture which task to delete when the modal opens
   document.querySelectorAll('.btn[data-bs-target="#deleteModal"]').forEach(button => {
     button.addEventListener('click', function () {
-      taskToDelete = this.closest('form').action; // Ruta de la tarea
+      taskToDelete = this.closest('form').action; // The task's delete route
     });
   });
 
-  // Confirmar eliminación
+  // Confirm deletion
   confirmDeleteBtn.addEventListener('click', function () {
     if (taskToDelete) {
       const form = document.createElement('form');
       form.method = 'POST';
       form.action = taskToDelete;
       document.body.appendChild(form);
-      form.submit(); // Enviar solicitud de eliminación
+      form.submit(); // Submit the deletion request
     }
   });
 });

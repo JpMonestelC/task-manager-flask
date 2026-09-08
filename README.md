@@ -97,6 +97,8 @@ Unlike a couple of the other projects in this portfolio, this one could actually
 - Verified specifically that a username containing an underscore (previously silently blocked by the client-side regex) now submits successfully end to end.
 - The screenshots below were captured directly from this automated run, not staged separately.
 
+**Organization/code-quality pass (third pass, independent of security/functionality):** the riskiest change in this pass — remodeling `Todo.state` from a tri-state boolean to a string enum, which touches the model, both views, the board template, and the dropdown's JavaScript — was re-verified end to end twice, independently: a fresh 19-check HTTP suite (registration, invalid username/email rejected without a 500, the full `not_started → in_progress → completed → not_started` cycle, an invalid state value being ignored instead of silently stored, and the two-user IDOR regression) and a fresh Playwright/Chromium run driving the real create/edit modals through all three status transitions via the real dropdown, confirming the visible status badge and board column update correctly each time, with zero browser console errors, and confirming the extracted shared `togglePassword()` script still works.
+
 ## Screenshots
 
 Captured from the automated Playwright run described above, so these reflect the app actually running, not mockups.
@@ -111,7 +113,7 @@ Captured from the automated Playwright run described above, so these reflect the
 
 ## Project history — what changed from the original
 
-This started as a university to-do list project built around a sprint-based workflow with a role-played "client." Kept from the original: the Flask application-factory structure, the `auth`/`todo` blueprint split, the three-state task model, and the Bootstrap-based UI. Changed for this portfolio:
+This started as a university to-do list project built around a sprint-based workflow with a role-played "client." Kept from the original: the Flask application-factory structure, the `auth`/`todo` blueprint split, the three-state task workflow, and the Bootstrap-based UI. Changed for this portfolio:
 
 - **`SECRET_KEY` and `DEBUG` were hardcoded in `todor/__init__.py`** (`SECRET_KEY='dev'`, `DEBUG=True`) — now read from environment variables with safe defaults; see Configuration above.
 - **Fixed an IDOR vulnerability**: `/todo/update/<id>` and `/todo/delete/<id>` didn't check that the task being edited/deleted actually belonged to the logged-in user.
@@ -123,6 +125,7 @@ This started as a university to-do list project built around a sprint-based work
 - **Fixed a client/server validation mismatch found during a second, deeper QA pass**: the registration page's client-side JS rejected usernames the server would accept (see Security notes above) — found only once QA escalated to real browser automation.
 - **`env-todo/` (the original virtual environment) and `instance/todolist.db`** (a SQLite file with real test accounts and password hashes from development) are no longer part of the repo — both are now `.gitignore`d; the database is recreated automatically on first run.
 - Added this README, `.gitignore`, and `LICENSE` (none existed before).
+- **Organization/code-quality pass** (third review, done after the security/functionality rework above was already published): `Todo.state` was remodeled from a booleanish tri-state column (`None`/`False`/`True`, compared against string literals in three different places) to an explicit `db.String` with named constants (`Todo.STATE_NOT_STARTED`, etc.) — the actual bug-shaped root cause behind having to keep three copies of the same string mapping in sync; the username format check was centralized into a single `@validates` on the `User` model instead of being duplicated between the server and a client-side-only mirror; `User.password` was renamed to `password_hash` (it only ever stored a hash); email format is now also validated server-side; unused imports, a misplaced `import functools`, dead CSS, a dead Jinja `title` block, and duplicated inline styles/JS (`togglePassword()`, now shared) were cleaned up; and comments/flash messages that had stayed in Spanish while the rest of the app's domain was already in English were translated for consistency.
 
 ## Roadmap
 

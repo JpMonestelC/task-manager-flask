@@ -6,7 +6,7 @@
         <div class="col-lg-6 col-md-8 col-sm-10">
             <h2 class="mb-4 text-start" style="color: #16558C; font-weight: bold;">Sign up</h2>
 
-            <!-- Mostrar mensajes de flash -->
+            <!-- Show flash messages -->
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     <div class="alert alert-danger" role="alert">
@@ -20,33 +20,30 @@
             <form id="registerForm" action="" method="post" class="shadow p-4 bg-white rounded">
                 <div class="form-group mb-4">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" required minlength="4" maxlength="20" 
-                           style="border-radius: 8px; padding: 15px; font-size: 1.2rem;">
+                    <input type="text" id="username" name="username" class="form-control auth-input" required minlength="4" maxlength="20">
                     <div class="invalid-feedback" id="usernameError" style="display: none; color: red;">
-                        No es posible crear un usuario con caracteres especiales.
+                        Usernames can't contain special characters.
                     </div>
                 </div>
 
                 <div class="form-group mb-4">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" required 
-                           style="border-radius: 8px; padding: 15px; font-size: 1.2rem;">
+                    <input type="email" id="email" name="email" class="form-control auth-input" required>
                     <div class="invalid-feedback" id="emailError" style="display: none; color: red;">
-                        Por favor, ingresa un correo electrónico válido.
+                        Please enter a valid email address.
                     </div>
                 </div>
 
                 <div class="form-group mb-4">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <input type="password" id="password" name="password" class="form-control" required 
-                               style="border-radius: 8px; padding: 15px; font-size: 1.2rem; margin-bottom: 15px;">
+                        <input type="password" id="password" name="password" class="form-control auth-input" required>
                         <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()" style="border: none; background-color: transparent;">
                             <img src="{{ url_for('static', filename='eye.png') }}" alt="Toggle Password" id="toggleIcon" style="width: 24px; height: 24px;">
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="text-center">
                     <button type="submit" class="btn custom-btn px-4 py-2 w-100" style="border-radius: 25px; font-size: 1.2rem;">Sign In</button>
                 </div>
@@ -55,17 +52,8 @@
     </div>
 </div>
 
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
 <script>
-    function togglePassword() {
-        const passwordInput = document.getElementById('password');
-        const toggleIcon = document.getElementById('toggleIcon');
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-        } else {
-            passwordInput.type = 'password';
-        }
-    }
-
     // Custom validation for Username and Email
     const registerForm = document.getElementById('registerForm');
     const usernameInput = document.getElementById('username');
@@ -76,9 +64,11 @@
     registerForm.addEventListener('submit', function (event) {
         let isValid = true;
 
-        // Username validation
+        // Username validation - client-side UX only: mirrors the format
+        // enforced by User.validate_username in models.py, which is now the
+        // single source of truth for this rule (see auth.py register()).
         const usernameValue = usernameInput.value;
-        const usernameRegex = /^[a-zA-Z0-9_]+$/; // Letters, numbers and underscores - matches the server-side check in auth.py
+        const usernameRegex = /^[a-zA-Z0-9_]+$/; // Letters, numbers and underscores
         if (!usernameRegex.test(usernameValue)) {
             isValid = false;
             usernameError.style.display = 'block';
